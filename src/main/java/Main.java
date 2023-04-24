@@ -3,6 +3,7 @@ import brown.Brown;
 import java.io.IOException;
 import java.util.Arrays;
 
+// Author Patryk Migdalski
 public class Main {
     public static void main(String[] args){
         try{

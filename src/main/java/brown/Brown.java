@@ -35,9 +35,6 @@ public class Brown {
         }
     }
 
-    /*
-        Zwraca ilość wystąpień danej strategii (numerowanie zaczyna się od 1)
-     */
     public HashMap<Integer, Integer> numberOfStrategy(String player){
         if (player.equals("A")){
             return strategyOfA;
@@ -61,9 +58,6 @@ public class Brown {
         return new float[] {lower,upper};
     }
 
-    /*
-        Częstotliwość występowanie danej strategii
-     */
     public HashMap<Integer, Float> frequencyOfStrategy(String player){
         HashMap<Integer, Float> frequency = new HashMap<>();
         if (player.equals("A")) {
@@ -78,25 +72,6 @@ public class Brown {
         return frequency;
     }
 
-    private void readFile(String path) throws IOException {
-        ArrayList<Integer> column = new ArrayList<>();
-        FileReader fileReader = new FileReader(path);
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-        String line;
-        while((line = bufferedReader.readLine()) != null ){
-            String[] variables = line.split(" ");
-            for(String i :variables){
-                column.add(Integer.parseInt(i));
-            }
-            matrix.add(column);
-            column = new ArrayList<>();
-        }
-    }
-
-    /*
-        Punkt startowy powinien być numerem z zakresu od 1 do n, gdzie n jest liczbą wierszy.
-        Gracz A zawsze rozpoczyna grę.
-     */
     public void start(int iteration, int start){
         iterationNumber = iteration;
         ArrayList<Integer> strategy = matrix.get(start-1);
@@ -135,6 +110,21 @@ public class Brown {
         }
 
         return temp;
+    }
+
+    private void readFile(String path) throws IOException {
+        ArrayList<Integer> column = new ArrayList<>();
+        FileReader fileReader = new FileReader(path);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        String line;
+        while((line = bufferedReader.readLine()) != null ){
+            String[] variables = line.split(" ");
+            for(String i :variables){
+                column.add(Integer.parseInt(i));
+            }
+            matrix.add(column);
+            column = new ArrayList<>();
+        }
     }
 }
 
